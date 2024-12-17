@@ -43,3 +43,6 @@ To avoid hitting CPU time limits, processing is delegated to an external script 
 5️⃣ Generate the CSV
 The external script processes fetched records and generates a user-friendly CSV file, ready for download.
 
+
+https://github.com/user-attachments/assets/7971b58a-2762-4496-b26a-6825c90d99ab
+
