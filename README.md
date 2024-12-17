@@ -42,6 +42,4 @@ To avoid hitting CPU time limits, processing is delegated to an external script 
 
 5️⃣ Generate the CSV
 The external script processes fetched records and generates a user-friendly CSV file, ready for download.
-🚀 Why This Matters:
-This solution eliminates the data export limitations in Salesforce and simplifies handling large datasets. Ideal for businesses working with extensive Salesforce data! 📊
-Feel free to reach out with questions or for a deeper dive—I’d love to connect! 🤝
+
