@@ -6,14 +6,14 @@ ListViews to CSV—bypassing the standard 2,000-record limit! 🚀
  This is a game-changer for anyone working with large datasets in Salesforce.
  
 🔑 Key Features:
-✅ Dynamic ListView Support
-Integrates seamlessly with both standard and custom objects by dynamically pulling ListView metadata.
-✅ Clean CSV Output
-Excludes unnecessary system fields (like Id and SystemModstamp) for cleaner, more usable CSV files.
-✅ Optimized Queries
-Uses the REST API for fast, efficient data handling, even with large datasets.
-✅ Secure & Scalable
-Built using Salesforce best practices to ensure performance and scalability.
+     ✅ Dynamic ListView Support
+     Integrates seamlessly with both standard and custom objects by dynamically pulling ListView metadata.
+     ✅ Clean CSV Output
+     Excludes unnecessary system fields (like Id and SystemModstamp) for cleaner, more usable CSV files.
+     ✅ Optimized Queries
+     Uses the REST API for fast, efficient data handling, even with large datasets.
+     ✅ Secure & Scalable
+     Built using Salesforce best practices to ensure performance and scalability.
 
 ⚙️ How It Works:
 1️⃣ Fetch the ListView ID
