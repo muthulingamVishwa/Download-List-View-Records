@@ -1,0 +1,15 @@
+<!-- This Visualforce page adds a button to the Account Detail View page to download list view records as an XLSX file. -->
+<apex:page standardController="Account"  recordSetVar="Account" extensions="getlistId">
+
+<!-- This script dynamically downloads the list view records as an XLSX file when the page loads. -->
+<script>
+  // Open the download URL dynamically using the provided list view ID.
+    window.onload =function(){
+        window.open('/apex/download?listViewId={!listviewId}');
+        window.history.back();
+ // Navigate back to the previous page in browser history after opening the download link.
+          
+    }
+</script>
+
+</apex:page>
