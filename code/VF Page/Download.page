@@ -1,4 +1,4 @@
-<apex:page controller="ExportTo">
+<apex:page controller="GetListViewRecord">
     <style>
         /* Full-page overlay and spinner */
         .spinner, .overlay {
