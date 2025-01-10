@@ -1,0 +1,91 @@
+<apex:page controller="ExportTo">
+    <style>
+        /* Full-page overlay and spinner */
+        .spinner, .overlay {
+            display: none; /* Hidden by default */
+        }
+        .spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+            z-index: 999;
+        }
+    </style>
+
+    <!-- Overlay and Spinner -->
+    <div class="overlay" id="overlay"></div>
+    <div class="spinner" id="spinner">
+        <img src="/img/loading.gif" alt="Loading..." />
+    </div>
+
+    <script>
+        console.log('Start of CSV generation script.');
+
+        const rawRecords = JSON.parse('{!JSENCODE(rawRecordsCsv)}'); 
+        const csvFileName = '{!JSENCODE(NameExecel)}.csv'; 
+
+        function generateCsvFile() {
+            const spinner = document.getElementById("spinner");
+            const overlay = document.getElementById("overlay");
+
+            // Show spinner and overlay
+            spinner.style.display = "block";
+            overlay.style.display = "block";
+
+            if (!rawRecords || rawRecords.length === 0) {
+                console.error("No data available for CSV export.");
+                alert("No data available for export.");
+                spinner.style.display = "none";
+                overlay.style.display = "none";
+                return;
+            }
+
+            const headers = new Set();
+            const rows = [];
+            const excludedFields = ['Id', 'SystemModstamp', 'LastModifiedDate', 'CreatedDate', 'attributes'];
+
+            rawRecords.forEach(record => {
+                const rowData = {};
+                Object.entries(record).forEach(([fieldName, fieldValue]) => {
+                    if (excludedFields.includes(fieldName)) return;
+                    headers.add(fieldName);
+                    rowData[fieldName] = fieldValue != null && fieldValue !== '' ? fieldValue : '';
+                });
+                rows.push(rowData);
+            });
+
+            const headersArray = Array.from(headers);
+            const csvContent = [
+                headersArray.join(','), 
+                ...rows.map(row =>
+                    headersArray.map(header => `"${row[header] || ''}"`).join(',')
+                )
+            ].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = csvFileName;
+            downloadLink.click();
+
+            // Hide spinner and overlay
+            spinner.style.display = "none";
+            overlay.style.display = "none";
+
+            window.close();
+        }
+
+        document.addEventListener("DOMContentLoaded", generateCsvFile);
+    </script>
+</apex:page>
