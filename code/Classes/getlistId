@@ -1,0 +1,8 @@
+public with sharing class getlistId {
+    public String listviewId{get;set;}
+
+    public getlistId(ApexPages.StandardSetController controller) {
+        listViewId = controller.getFilterId();
+
+    }
+}
