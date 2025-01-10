@@ -20,8 +20,8 @@ ListViews to CSV—bypassing the standard 2,000-record limit! 🚀
     1️⃣ Fetch the ListView ID
         The solution dynamically retrieves the ListView ID using getFilterId() in a Visualforce page.
         Example setup:
-        •  standardController="Employee__c": Leverages Salesforce’s built-in controller for Employee__c records.
-        •  recordSetVar="Employee__c": Defines the variable for the list of Employee__c records.
+        •  standardController="Account": Leverages Salesforce’s built-in controller for Account records.
+        •  recordSetVar="Account": Defines the variable for the list of Account records.
         •  window.onload: Executes the script when the page fully loads.
         •  window.open('/apex/download?listViewId={!listviewId}'): Opens a new tab with a dynamic download link.
         •  window.history.back(): Redirects the user back to the previous page after initiating the download.
